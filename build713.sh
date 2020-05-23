@@ -1,0 +1,64 @@
+#!/bin/bash
+
+set -x
+
+export CPPFLAGS="-DMDB_USE_ROBUST=0 -DDISABLE_X64"
+export CFLAGS="-DMDB_USE_ROBUST=0 -DDISABLE_X64"
+
+BASE_DIR=`pwd`
+source $HOME/.cargo/env
+export PATH="$BASE_DIR/rustpatch:/$BASE_DIR/rustbin/bin:$PATH"
+
+#git clone https://github.com/mwcproject/mwc713
+pushd mwc713 
+
+#rm -rf target
+rm ~/.cargo/config
+
+echo "[target.arm-linux-androideabi]" >> ~/.cargo/config
+echo "ar = \"$BASE_DIR/ndk_19/bin/arm-linux-androideabi-ar\""  >> ~/.cargo/config
+echo "linker = \"$BASE_DIR/ndk_19/bin/arm-linux-androideabi-clang\""  >> ~/.cargo/config
+echo ""  >> ~/.cargo/config
+echo "[target.i686-linux-android]"  >> ~/.cargo/config
+echo "ar = \"$BASE_DIR/ndk_19/bin/i686-linux-android-ar\""  >> ~/.cargo/config
+echo "linker = \"$BASE_DIR/ndk_19/bin/i686-linux-android-clang\""  >> ~/.cargo/config
+echo ""  >> ~/.cargo/config
+echo "[target.aarch64-linux-android]"  >> ~/.cargo/config
+echo "ar = \"$BASE_DIR/ndk_21/bin/aarch64-linux-android-ar\""  >> ~/.cargo/config
+echo "linker = \"$BASE_DIR/ndk_21/bin/aarch64-linux-android-clang\""  >> ~/.cargo/config
+echo ""  >> ~/.cargo/config
+echo "[target.x86_64-linux-android]"  >> ~/.cargo/config
+echo "ar = \"$BASE_DIR/ndk_21/bin/x86_64-linux-android-ar\""  >> ~/.cargo/config
+echo "linker = \"$BASE_DIR/ndk_21/bin/x86_64-linux-android-clang\""  >> ~/.cargo/config
+
+rustup target add aarch64-linux-android arm-linux-androideabi i686-linux-android x86_64-linux-android
+
+
+PATH_ORIG="$PATH"
+
+PATH="$PATH_ORIG:$BASE_DIR/ndk_19/bin"
+cp $BASE_DIR/ndk_19/bin/arm/*  $BASE_DIR/ndk_19/bin
+cargo build --target=arm-linux-androideabi --release
+
+PATH="$PATH_ORIG:$BASE_DIR/ndk_19/bin"
+cp $BASE_DIR/ndk_19/bin/i686/*  $BASE_DIR/ndk_19/bin
+cargo build --target=i686-linux-android --release
+
+PATH="$PATH_ORIG:$BASE_DIR/ndk_21/bin"
+cp $BASE_DIR/ndk_21/bin/arm64/*  $BASE_DIR/ndk_19/bin
+cargo build --target=aarch64-linux-android --release
+
+PATH="$PATH_ORIG:$BASE_DIR/ndk_21/bin"
+cp $BASE_DIR/ndk_21/bin/x86_64/*  $BASE_DIR/ndk_19/bin
+cargo build --target=x86_64-linux-android --release
+
+PATH="$PATH_ORIG" 
+cargo build --release
+
+popd
+
+# Deploy and run on the device
+#$ADB shell rm /data/local/tmp/mwc713
+#$ADB push target/arm-linux-androideabi/release/mwc713  /data/local/tmp
+#$ADB shell /data/local/tmp/mwc713 --config /data/local/tmp/floo/wallet713.toml
+

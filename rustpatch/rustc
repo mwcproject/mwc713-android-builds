@@ -1,0 +1,2 @@
+#!/bin/bash
+exec /mw/arm/rustbin/bin/rustc -C link-args=-pie "\$@"
