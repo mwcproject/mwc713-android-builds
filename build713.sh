@@ -9,10 +9,9 @@ BASE_DIR=`pwd`
 source $HOME/.cargo/env
 export PATH="$BASE_DIR/rustpatch:/$BASE_DIR/rustbin/bin:$PATH"
 
-#git clone https://github.com/mwcproject/mwc713
+git clone https://github.com/mwcproject/mwc713
 pushd mwc713 
 
-#rm -rf target
 rm ~/.cargo/config
 
 echo "[target.arm-linux-androideabi]" >> ~/.cargo/config
@@ -57,8 +56,4 @@ cargo build --release
 
 popd
 
-# Deploy and run on the device
-#$ADB shell rm /data/local/tmp/mwc713
-#$ADB push target/arm-linux-androideabi/release/mwc713  /data/local/tmp
-#$ADB shell /data/local/tmp/mwc713 --config /data/local/tmp/floo/wallet713.toml
 
