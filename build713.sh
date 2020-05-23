@@ -51,8 +51,7 @@ PATH="$PATH_ORIG:$BASE_DIR/ndk_21/bin"
 cp $BASE_DIR/ndk_21/bin/x86_64/*  $BASE_DIR/ndk_21/bin
 cargo build --target=x86_64-linux-android --release
 
-PATH="$PATH_ORIG" 
-cargo build --release
+PATH="$PATH_ORIG"
 
 popd
 
