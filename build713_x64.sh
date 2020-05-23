@@ -38,5 +38,3 @@ cargo build --target=x86_64-linux-android --release
 PATH="$PATH_ORIG"
 
 popd
-
-

@@ -29,4 +29,3 @@ mkdir -p ~/.ssh
 
 upload_file aarch64-linux-android arm64
 upload_file x86_64-linux-android  x86_64
-
