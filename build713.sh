@@ -44,11 +44,11 @@ cp $BASE_DIR/ndk_19/bin/i686/*  $BASE_DIR/ndk_19/bin
 cargo build --target=i686-linux-android --release
 
 PATH="$PATH_ORIG:$BASE_DIR/ndk_21/bin"
-cp $BASE_DIR/ndk_21/bin/arm64/*  $BASE_DIR/ndk_19/bin
+cp $BASE_DIR/ndk_21/bin/arm64/*  $BASE_DIR/ndk_21/bin
 cargo build --target=aarch64-linux-android --release
 
 PATH="$PATH_ORIG:$BASE_DIR/ndk_21/bin"
-cp $BASE_DIR/ndk_21/bin/x86_64/*  $BASE_DIR/ndk_19/bin
+cp $BASE_DIR/ndk_21/bin/x86_64/*  $BASE_DIR/ndk_21/bin
 cargo build --target=x86_64-linux-android --release
 
 PATH="$PATH_ORIG" 
