@@ -30,4 +30,4 @@ echo "pass = $2"
 mkdir -p ~/.ssh
 
 upload_file aarch64-linux-android arm64 $3
-upload_file x86_64-linux-android  x86_64 $3
+upload_file x86_64-linux-android x86_64 $3
