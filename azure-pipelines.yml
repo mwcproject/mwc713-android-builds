@@ -18,7 +18,7 @@ jobs:
   steps:
     - script: './setup_linux.sh'
     - script: './build713_x32.sh'
-    - script: './deploy_linux_x32.sh $(Build.BuildNumber)'
+    - script: './deploy_linux_x32.sh $(Build.BuildNumber) $(UPLOADCREDS)'
   displayName: 'build x32 ABI'
 - job: x64_ABI
   pool:
@@ -26,5 +26,5 @@ jobs:
   steps:
     - script: './setup_linux.sh'
     - script: './build713_x64.sh'
-    - script: './deploy_linux_x64.sh $(Build.BuildNumber)'
+    - script: './deploy_linux_x64.sh $(Build.BuildNumber) $(UPLOADCREDS)'
   displayName: 'build x64 ABI'

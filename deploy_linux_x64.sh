@@ -21,7 +21,7 @@ function upload_file {
     BIN_NAME=${DPKG_NAME}_${BIN_SUFFIX}
 	cp mwc713/target/${TARGET}/release/mwc713 $BIN_NAME
 	echo "md5sum = `md5sum $BIN_NAME`";
-	scp -i ./uploader.pem -o 'StrictHostKeyChecking no' $BIN_NAME uploader\@3.228.53.68:/home/uploader/
+        ./scp.expect $BIN_NAME $2
 }
 
 
