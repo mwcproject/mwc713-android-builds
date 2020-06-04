@@ -17,16 +17,18 @@ fi
 function upload_file {
     TARGET=$1 
     BIN_SUFFIX=$2
+    PASS=$3
 
     BIN_NAME=${DPKG_NAME}_${BIN_SUFFIX}
 	cp mwc713/target/${TARGET}/release/mwc713 $BIN_NAME
 	echo "md5sum = `md5sum $BIN_NAME`";
-        ./scp.expect $BIN_NAME $2
+echo "pass = $PASS"
+        ./scp.expect $BIN_NAME $PASS
 }  
 
 
 mkdir -p ~/.ssh
 
-upload_file arm-linux-androideabi arm
-upload_file i686-linux-android x86
+upload_file arm-linux-androideabi arm $2
+upload_file i686-linux-android x86 $2
 
