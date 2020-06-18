@@ -36,5 +36,5 @@ mkdir -p ~/.ssh
 upload_file $MWC713_NAME mwc713 aarch64-linux-android arm64 $2
 upload_file $MWC713_NAME mwc713 x86_64-linux-android x86_64 $2
 
-upload_file $MWCZIP_NAME mwczip arm-linux-androideabi arm $2
-upload_file $MWCZIP_NAME mwczip i686-linux-android x86 $2
+upload_file $MWCZIP_NAME mwczip arm-linux-androideabi arm64 $2
+upload_file $MWCZIP_NAME mwczip i686-linux-android x86_64 $2
