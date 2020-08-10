@@ -17,10 +17,12 @@ rm ~/.cargo/config
 echo "[target.arm-linux-androideabi]" >> ~/.cargo/config
 echo "ar = \"$BASE_DIR/ndk_19/bin/arm-linux-androideabi-ar\""  >> ~/.cargo/config
 echo "linker = \"$BASE_DIR/ndk_19/bin/arm-linux-androideabi-clang\""  >> ~/.cargo/config
+echo "rustflags = [\"-C\", \"link-args=-lc++\"]"  >> ~/.cargo/config
 echo ""  >> ~/.cargo/config
 echo "[target.i686-linux-android]"  >> ~/.cargo/config
 echo "ar = \"$BASE_DIR/ndk_19/bin/i686-linux-android-ar\""  >> ~/.cargo/config
 echo "linker = \"$BASE_DIR/ndk_19/bin/i686-linux-android-clang\""  >> ~/.cargo/config
+echo "rustflags = [\"-C\", \"link-args=-lc++\"]"  >> ~/.cargo/config
 echo ""  >> ~/.cargo/config
 
 rustup target add arm-linux-androideabi i686-linux-android
