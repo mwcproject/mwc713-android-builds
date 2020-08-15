@@ -14,16 +14,15 @@ pushd mwc713
 
 rm ~/.cargo/config
 
-echo "[target.arm-linux-androideabi]" >> ~/.cargo/config
 echo "[target.aarch64-linux-android]"  >> ~/.cargo/config
 echo "ar = \"$BASE_DIR/ndk_21/bin/aarch64-linux-android-ar\""  >> ~/.cargo/config
 echo "linker = \"$BASE_DIR/ndk_21/bin/aarch64-linux-android-clang\""  >> ~/.cargo/config
-echo "rustflags = [\"-C\", \"link-args=-lc++\"]"  >> ~/.cargo/config
+echo "rustflags = [\"-C\", \"link-args=$BASE_DIR/ndk_21/sysroot/usr/lib/aarch64-linux-android/21/libc++.a\"]"  >> ~/.cargo/config
 echo ""  >> ~/.cargo/config
 echo "[target.x86_64-linux-android]"  >> ~/.cargo/config
 echo "ar = \"$BASE_DIR/ndk_21/bin/x86_64-linux-android-ar\""  >> ~/.cargo/config
 echo "linker = \"$BASE_DIR/ndk_21/bin/x86_64-linux-android-clang\""  >> ~/.cargo/config
-echo "rustflags = [\"-C\", \"link-args=-lc++\"]"  >> ~/.cargo/config
+echo "rustflags = [\"-C\", \"link-args=$BASE_DIR/ndk_21/sysroot/usr/lib/x86_64-linux-android/21/libc++.a\"]"  >> ~/.cargo/config
 
 rustup target add aarch64-linux-android arm-linux-androideabi i686-linux-android x86_64-linux-android
 
