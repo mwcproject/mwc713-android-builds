@@ -12,17 +12,19 @@ deploy_linux.sh - upload to nightly build server
 ----------------------
 
 How to compress:
+```
 tar cvfj helpers/rustbin/rustbin.tar.bz2  rustbin
 split -b 40m -a 3 helpers/rustbin/rustbin.tar.bz2 helpers/rustbin/rustbin_
 rm helpers/rustbin/rustbin.tar.bz2
-
+```
 Results at helpers/rustbin/: rustbin_aaa  rustbin_aab  rustbin_aac  rustbin_aad  rustbin_aae
 
 Do the same for NDKs
 
 
 How to extract:
+```
 cat helpers/rustbin/rustbin_* | bzip2 -dc | tar xvf -
 cat helpers/ndk_19/ndk_19_* | bzip2 -dc | tar xvf -
 cat helpers/ndk_21/ndk_21_* | bzip2 -dc | tar xvf -
-
+```
