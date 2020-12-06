@@ -12,11 +12,11 @@ export PATH="$BASE_DIR/rustpatch:/$BASE_DIR/rustbin/bin:$PATH"
 
 set +e
 rm -rf mwc713
+rm ~/.cargo/config
 set -e
+
 git clone https://github.com/mwcproject/mwc713
 pushd mwc713 
-
-rm ~/.cargo/config
 
 echo "[target.arm-linux-androideabi]" >> ~/.cargo/config
 echo "ar = \"$BASE_DIR/ndk_19/bin/arm-linux-androideabi-ar\""  >> ~/.cargo/config

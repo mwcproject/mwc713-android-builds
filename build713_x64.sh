@@ -12,11 +12,11 @@ export PATH="$BASE_DIR/rustpatch:/$BASE_DIR/rustbin/bin:$PATH"
 
 set +e
 rm -rf mwc713
+rm ~/.cargo/config
 set -e
+
 git clone https://github.com/mwcproject/mwc713
 pushd mwc713
-
-rm ~/.cargo/config
 
 echo "[target.aarch64-linux-android]"  >> ~/.cargo/config
 echo "ar = \"$BASE_DIR/ndk_21/bin/aarch64-linux-android-ar\""  >> ~/.cargo/config
