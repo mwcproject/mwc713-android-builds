@@ -25,10 +25,9 @@ function upload_file {
     PASS=$5
 
     BIN_NAME=${DPKG_NAME}_${BIN_SUFFIX}
-	cp mwc713/target/${TARGET}/release/${BIN_FN} $BIN_NAME
-	echo "md5sum = `md5sum $BIN_NAME`";
-echo "pass = $PASS"
-        ./scp.expect $BIN_NAME $PASS
+	  cp mwc713/target/${TARGET}/release/${BIN_FN} $BIN_NAME
+   	echo "md5sum = `md5sum $BIN_NAME`";
+    ./scp.expect $BIN_NAME $PASS
 }
 
 

@@ -36,14 +36,14 @@ PATH="$PATH_ORIG:$BASE_DIR/ndk_21/bin"
 cp $BASE_DIR/ndk_21/bin/arm64/*  $BASE_DIR/ndk_21/bin
 # Tweak libc++_shared.so to static. By some reasons linker flag -lc++_static  doesn't work.
 # So we are doing nasty hacking by copy static lib into dynamic. Compiler eats that
-cp $BASE_DIR/ndk_21/sysroot/usr/lib/aarch64-linux-android/libc++_static.a  $BASE_DIR/ndk_19/sysroot/usr/lib/aarch64-linux-android/libc++_shared.so
+cp $BASE_DIR/ndk_21/sysroot/usr/lib/aarch64-linux-android/libc++_static.a  $BASE_DIR/ndk_21/sysroot/usr/lib/aarch64-linux-android/libc++_shared.so
 cargo build --target=aarch64-linux-android --release
 
 PATH="$PATH_ORIG:$BASE_DIR/ndk_21/bin"
 cp $BASE_DIR/ndk_21/bin/x86_64/*  $BASE_DIR/ndk_21/bin
 # Tweak libc++_shared.so to static. By some reasons linker flag -lc++_static  doesn't work.
 # So we are doing nasty hacking by copy static lib into dynamic. Compiler eats that
-cp $BASE_DIR/ndk_21/sysroot/usr/lib/x86_64-linux-android/libc++_static.a  $BASE_DIR/ndk_19/sysroot/usr/lib/x86_64-linux-android/libc++_shared.so
+cp $BASE_DIR/ndk_21/sysroot/usr/lib/x86_64-linux-android/libc++_static.a  $BASE_DIR/ndk_21/sysroot/usr/lib/x86_64-linux-android/libc++_shared.so
 cargo build --target=x86_64-linux-android --release
 
 PATH="$PATH_ORIG"
