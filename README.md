@@ -10,7 +10,7 @@ build713.sh - build mwc713 for all four Android ABI
 deploy_linux.sh - upload to nightly build server
 
 ----------------------
-
+(rustbin)
 How to compress:
 ```
 tar cvfj helpers/rustbin/rustbin.tar.bz2  rustbin
