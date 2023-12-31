@@ -14,7 +14,7 @@ schedules:
 jobs:
 - job: x32_ABI
   pool:
-    vmImage: ubuntu-18.04
+    vmImage: ubuntu-20.04
   steps:
     - script: './setup_linux.sh'
     - script: './build713_x32.sh'
@@ -22,7 +22,7 @@ jobs:
   displayName: 'build x32 ABI'
 - job: x64_ABI
   pool:
-    vmImage: ubuntu-18.04
+    vmImage: ubuntu-20.04
   steps:
     - script: './setup_linux.sh'
     - script: './build713_x64.sh'
